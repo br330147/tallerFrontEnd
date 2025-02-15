@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     usuario: localStorage.getItem("usuario") || null,
     token: localStorage.getItem("token") || null,
-    iduser: localStorage.getItem("iduser") || null,
+    id: localStorage.getItem("id") || null,
 }
 
 const sliceUsuarios = createSlice({
@@ -18,16 +18,16 @@ const sliceUsuarios = createSlice({
             //acá lo mandamos al local storage
 
             localStorage.setItem("token", action.payload.token);
-            localStorage.setItem("usuario", action.payload.usuario);
-            localStorage.setItem("iduser", action.payload.iduser);
+            // localStorage.setItem("usuario", action.payload.usuario);
+            localStorage.setItem("id", action.payload.id);
         },
         logout: (state) => {
             state.token = null;
-            state.usuario = null;
-            state.iduser = null;
+            // state.usuario = null;
+            state.id = null;
             // localStorage.removeItem("token");
             // localStorage.removeItem("usuario");
-            // localStorage.removeItem("iduser");
+            // localStorage.removeItem("id");
             localStorage.clear();
           },
     },

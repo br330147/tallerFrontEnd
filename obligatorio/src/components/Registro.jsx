@@ -39,7 +39,7 @@ const Registro = () => {
 
     try {
       const userData = await registroUser(usuario, password, idPais);
-      dispatch(setUsuario({ usuario: userData.usuario, token: userData.apiKey }));
+      dispatch(setUsuario({ usuario: userData.usuario, token: userData.apiKey, id: userData.id }));
       navigate("/dashboard");
     } catch (err) {
       setError(err.message);
@@ -95,8 +95,7 @@ const Registro = () => {
                 </Form.Select>
               )}
             </Form.Group>
-
-            <Button variant="success" onClick={handleRegistro} className="w-100">
+            <Button variant="success" onClick={handleRegistro} className="w-100" disabled={!usuario.trim() || !password.trim() || !idPais}>
               Registrarse
             </Button>
           </Form>

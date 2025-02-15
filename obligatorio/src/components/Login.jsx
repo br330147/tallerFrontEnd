@@ -21,7 +21,7 @@ const Login = () => {
 
         try {
             const userData = await loginUser(usuario, password);
-            dispatch(setUsuario({ usuario: userData.usuario, token: userData.apiKey }));
+            dispatch(setUsuario({ usuario: userData.usuario, token: userData.apiKey, id: userData.id }));
             navigate("/dashboard");
         } catch (err) {
             setError(err.message);
@@ -57,7 +57,7 @@ const Login = () => {
                             />
                         </Form.Group>
 
-                        <Button variant="primary" onClick={handleLogin} className="w-100">
+                        <Button variant="primary" onClick={handleLogin} className="w-100" disabled={!usuario.trim() || !password.trim()}>
                             Ingresar
                         </Button>
                     </Form>

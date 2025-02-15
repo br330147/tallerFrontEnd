@@ -22,6 +22,7 @@ export const loginUser = async (usuario, password) => {
             if (parsedResult.codigo !== 200) {
                 return Promise.reject(parsedResult);
             } else {
+                localStorage.setItem("usuario", usuario);
                 return parsedResult; // retornamos los datos
             }
         })
