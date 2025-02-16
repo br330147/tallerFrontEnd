@@ -1,26 +1,30 @@
 const API_URL = "https://movetrack.develotion.com/";
 
 export const addActividad = async (
-  idActividad,
   idUsuario,
+  idActividad,
   tiempo,
   fecha,
   token
 ) => {
-  const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append("apikey", token);
+
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+  headers.append("apikey", token);
+  headers.append("iduser", idUsuario.toString());
+
   const bodyData = JSON.stringify({
-    idActividad,
-    idUsuario,
-    tiempo,
+    idActividad : idActividad,
+    idUsuario : idUsuario,
+    tiempo: tiempo,
     fecha,
-    token,
   });
+
+  console.log("Enviando Body:", bodyData);
 
   const requestOptions = {
     method: "POST",
-    headers: myHeaders,
+    headers: headers,
     body: bodyData,
   };
 

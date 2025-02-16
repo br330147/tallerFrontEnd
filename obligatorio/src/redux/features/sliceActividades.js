@@ -8,14 +8,14 @@ const sliceActividades = createSlice({
   name: "actividades",
   initialState,
   reducers: {
+    agregarActividad: (state, action) => {
+      state.actividades.push(action.payload);
+    },
     cargarActividades: (state, action) => {
       state.actividades = action.payload;
-    },
-    addActividad: (state, action) => {
-      state.actividades.push(action.payload);
     },
   },
 });
 
-export const { cargarActividades, addActividad } = sliceActividades.actions;
+export const { cargarActividades, agregarActividad } = sliceActividades.actions;
 export default sliceActividades.reducer;
