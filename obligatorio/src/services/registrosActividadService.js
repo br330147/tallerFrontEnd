@@ -3,9 +3,6 @@ const IMG_URL = "https://movetrack.develotion.com/imgs/";
 
 const formatearRegistroConActividad = (registro, actividades) => {
 
-  console.log("Buscando actividad con ID:", registro.idActividad);
-
-
   const actividadEncontrada = actividades.find(a => a.id === Number(registro.idActividad)) || {};
   
   return {
@@ -48,16 +45,12 @@ export const eliminarRegistroActividad = async (idRegistro, idUsuario, token) =>
       "iduser": idUsuario.toString(),
     };
   
-    console.log("Eliminando registro con ID:", idRegistro);
-    console.log("Headers enviados:", myHeaders);
-  
     return fetch(`${API_URL}registros.php?idRegistro=${idRegistro}`, {
       method: "DELETE",
       headers: myHeaders,
     })
       .then(response => response.json())
       .then((result) => {
-        console.log("Respuesta de la API al eliminar registro:", result);
         if (result.codigo !== 200) {
           return Promise.reject(result);
         } else {

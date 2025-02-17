@@ -15,7 +15,6 @@ export const loginUser = async (usuario, password) => {
     return fetch(`${API_URL}login.php`, requestOptions)
         .then(response => response.text())  // parseo a texto
         .then(result => {
-            console.log("API Response:", result);
             const parsedResult = JSON.parse(result); // parseo JSON
             
             // Sia no es 200, la API tira error
@@ -27,7 +26,6 @@ export const loginUser = async (usuario, password) => {
             }
         })
         .catch(error => {
-            console.error("Error en la autenticación:", error);
             throw new Error(error.mensaje || "Error al iniciar sesión. Verifica tus credenciales.");
         });
 };

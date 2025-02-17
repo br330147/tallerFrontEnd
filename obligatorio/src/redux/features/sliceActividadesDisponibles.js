@@ -9,7 +9,6 @@ const sliceActividadesDisponibles = createSlice({
   initialState,
   reducers: {
     setActividades: (state, action) => {
-      console.log("Guardando actividades en Redux:", action.payload);
       state.actividades = action.payload;
     },
   },

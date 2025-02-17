@@ -23,10 +23,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchActividades = async () => {
-      console.log("Obteniendo actividades para usuario:", idUsuario);
+      // console.log("obtenemos act para el usuario usuario:", idUsuario);
       try {
         const actividades = await obtenerActividades(idUsuario, token);
-        console.log("Actividades obtenidas en Dashboard:", actividades);
+        // console.log("actividades obtenidas:", actividades);
         dispatch(setActividades(actividades));
       } catch (error) {
         console.error("Error obteniendo actividades:", error);

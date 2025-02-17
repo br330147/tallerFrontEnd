@@ -20,7 +20,7 @@ export const addActividad = async (
     fecha,
   });
 
-  console.log("Enviando Body:", bodyData);
+  // console.log("viaja el body:", bodyData);
 
   const requestOptions = {
     method: "POST",

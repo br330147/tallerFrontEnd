@@ -17,9 +17,9 @@ const sliceUsuarios = createSlice({
 
             //acá lo mandamos al local storage
 
-            localStorage.setItem("token", action.payload.token);
-            // localStorage.setItem("usuario", action.payload.usuario);
+            localStorage.setItem("token", action.payload.token);            
             localStorage.setItem("id", action.payload.id);
+            // usuario lo guardamos en los services de login y registro
         },
         logout: (state) => {
             state.token = null;

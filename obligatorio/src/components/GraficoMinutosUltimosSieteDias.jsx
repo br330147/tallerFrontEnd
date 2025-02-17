@@ -18,7 +18,7 @@ const GraficoMinutosUltimosSieteDias = () => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="minutos" fill="#8884d8" />
+            <Bar dataKey="minutos" fill="#d35400" />
           </BarChart>
         </ResponsiveContainer>
       ) : (

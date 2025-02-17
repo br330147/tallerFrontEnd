@@ -4,9 +4,7 @@ import { Form, Spinner } from "react-bootstrap";
 
 const SelectActividades = ({ idActividad, setIdActividad }) => {
   const actividades = useSelector((state) => state.actividadesDisponibles.actividades);
-
-  console.log("Actividades en Redux dentro de SelectActividades:", actividades); // Verificar si Redux tiene los datos
-
+  
   return (
     <Form.Group className="mb-3">
       <Form.Label>Actividad</Form.Label>

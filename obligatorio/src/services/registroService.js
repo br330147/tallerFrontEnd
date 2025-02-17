@@ -15,7 +15,6 @@ export const registroUser = async (usuario, password, idPais) => {
     return fetch(`${API_URL}usuarios.php`, requestOptions)
         .then(response => response.text())
         .then(result => {
-            console.log("API Response (Registro):", result);
             const parsedResult = JSON.parse(result);
             
             if (parsedResult.codigo !== 200) {

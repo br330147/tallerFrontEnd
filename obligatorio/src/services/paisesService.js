@@ -4,7 +4,6 @@ export const getPaises = async () => {
     return fetch(`${API_URL}paises.php`)
         .then(response => response.text())
         .then(result => {
-            console.log("API Response (Paises):", result);
             const parsedResult = JSON.parse(result);
 
             if (parsedResult.codigo !== 200) {

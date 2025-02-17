@@ -7,15 +7,12 @@ export const obtenerActividades = async (idUsuario, token) => {
     "iduser": idUsuario.toString(),
   };
 
-  console.log("Enviando Headers para obtener actividades:", myHeaders);
-
   return fetch(`${API_URL}actividades.php`, {
     method: "GET",
     headers: myHeaders,
   })
     .then(response => response.json())
     .then((result) => {
-      console.log("Actividades obtenidas:", result);
       if (!result || result.codigo !== 200) {
         return Promise.reject(result);
       } else {

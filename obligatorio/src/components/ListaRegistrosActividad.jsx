@@ -15,10 +15,8 @@ const ListaRegistrosActividad = () => {
 
   useEffect(() => {
     if (idUsuario && token && actividades.length > 0) {
-      console.log("Obteniendo registros para usuario:", idUsuario, "con API Key:", token);
       obtenerRegistrosActividad(idUsuario, token, actividades)
         .then((data) => {
-          console.log("Registros obtenidos con actividades:", data);
           dispatch(setRegistros(data));
         })
         .catch((error) => console.error("Error cargando registros:", error));

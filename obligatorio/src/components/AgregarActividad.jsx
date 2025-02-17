@@ -33,8 +33,6 @@ const FormularioRegistro = () => {
     }
   
     try {
-      console.log("ID Actividad seleccionado antes de guardar:", idActividad);
-  
       const nuevoEjercicioTemporal = {
         id: Math.floor(Math.random() * 100000000000), // id temporal para sumarlo a la lista
         usuarioId: idUsuario,
@@ -60,8 +58,6 @@ const FormularioRegistro = () => {
         actividad: actividadEncontrada.nombre || "Desconocida",
         imagen: actividadEncontrada.imagen ? `https://movetrack.develotion.com/imgs/${actividadEncontrada.imagen}.png` : "",
       };
-  
-      console.log("Nuevo ejercicio con ID real y formateado:", nuevoEjercicioReal);
   
       dispatch(setRegistros([...registros, nuevoEjercicioReal]));
   

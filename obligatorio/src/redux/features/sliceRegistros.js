@@ -9,7 +9,6 @@ const registrosSlice = createSlice({
   initialState,
   reducers: {
     setRegistros: (state, action) => {
-      console.log("Guardando registros en Redux:", action.payload);
       state.registros = action.payload;
     },
     eliminarRegistroRedux: (state, action) => {

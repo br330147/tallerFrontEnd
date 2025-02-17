@@ -15,8 +15,8 @@ const GraficoMinutosPorActividad = () => {
   }));
 
   const colores = [
-    "#FF5733", "#33FF57", "#3357FF", "#F0A500", 
-    "#A833FF", "#33FFF0", "#FF33A8", "#A8FF33"
+    "#76d7c4", "#138d75", "#f1c40f", "#e59866", 
+    "#d35400", "#a93226", "#76448a", "#2471a3"
   ];
 
   return (
