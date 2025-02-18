@@ -5,7 +5,7 @@ import InformeTiempoTotal from "./InformeTiempoTotal"
 import InformeTiempoDiario from "./InformeTiempoDiario";
 import GraficoMinutosPorActividad from "./GraficoMinutosPorActividad";
 import GraficoMinutosUltimosSieteDias from "./GraficoMinutosUltimosSieteDias";
-import { useEffect } from "react";
+import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { obtenerActividades } from "../services/cargaActividadesService";
 import { setActividades } from "../redux/features/sliceActividadesDisponibles";
@@ -15,9 +15,10 @@ import { Container, Row, Col } from "react-bootstrap";
 
 
 const Dashboard = () => {
-  const usuario = useSelector((state) => state.usuario.usuario);
-  const idUsuario = useSelector((state) => state.usuario.id);
-  const token = useSelector((state) => state.usuario.token);
+  const usuario = localStorage.getItem("usuario")
+  const idUsuario = localStorage.getItem("id")
+  const token = localStorage.getItem("token")
+
   const actividades = useSelector((state) => state.actividadesDisponibles.actividades);
   const dispatch = useDispatch();
 

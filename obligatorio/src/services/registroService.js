@@ -20,7 +20,7 @@ export const registroUser = async (usuario, password, idPais) => {
             if (parsedResult.codigo !== 200) {
                 return Promise.reject(parsedResult);
             } else {
-                localStorage.setItem("usuario", usuario);
+                // localStorage.setItem("usuario", usuario);
                 return parsedResult; // Devuelve los datos del usuario registrado
             }
         })

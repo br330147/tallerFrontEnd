@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setUsuario } from "../redux/features/sliceUsuarios";
 import { registroUser } from "../services/registroService"; // Ahora importamos desde registroService.js
 import { getPaises } from "../services/paisesService";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +11,6 @@ const Registro = () => {
   const [idPais, setIdPais] = useState(""); 
   const [error, setError] = useState(null);
   const [loadingPaises, setLoadingPaises] = useState(true);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,8 +35,12 @@ const Registro = () => {
     }
 
     try {
-      const userData = await registroUser(usuario, password, idPais);
-      dispatch(setUsuario({ usuario: userData.usuario, token: userData.apiKey, id: userData.id }));
+      const datosUsuario = await registroUser(usuario, password, idPais);
+
+      localStorage.setItem("usuario", usuario)
+      localStorage.setItem("token", datosUsuario.apiKey)
+      localStorage.setItem("id", datosUsuario.id)
+
       navigate("/dashboard");
     } catch (err) {
       setError(err.message);

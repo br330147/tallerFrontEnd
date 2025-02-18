@@ -6,8 +6,8 @@ import { Container, Table, Form } from "react-bootstrap";
 import RegistroActividad from "./RegistroActividad"; 
 
 const ListaRegistrosActividad = () => {
-  const idUsuario = useSelector((state) => state.usuario.id);
-  const token = useSelector((state) => state.usuario.token);
+  const idUsuario = localStorage.getItem("id")
+  const token = localStorage.getItem("token")
   const actividades = useSelector((state) => state.actividadesDisponibles.actividades)
   const registros = useSelector((state) => state.registros.registros);
   const dispatch = useDispatch();

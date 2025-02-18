@@ -6,8 +6,8 @@ import { Form, Button, Alert } from "react-bootstrap";
 import SelectActividades from "./SelectActividades";
 
 const FormularioRegistro = () => {
-  const idUsuario = useSelector((state) => state.usuario.id);
-  const token = useSelector((state) => state.usuario.token);
+  const idUsuario = localStorage.getItem("id")
+  const token = localStorage.getItem("token")
   const actividades = useSelector((state) => state.actividadesDisponibles.actividades);
 
   const dispatch = useDispatch();

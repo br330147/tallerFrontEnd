@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setUsuario } from "../redux/features/sliceUsuarios";
 import { loginUser } from "../services/loginService.js";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
@@ -10,7 +8,6 @@ const Login = () => {
     const [usuario, setUsuarioInput] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleLogin = async () => {
@@ -20,8 +17,12 @@ const Login = () => {
         }
 
         try {
-            const userData = await loginUser(usuario, password);
-            dispatch(setUsuario({ usuario: userData.usuario, token: userData.apiKey, id: userData.id }));
+            const datosUsuario = await loginUser(usuario, password);
+
+            localStorage.setItem("usuario", usuario)
+            localStorage.setItem("token", datosUsuario.apiKey)
+            localStorage.setItem("id", datosUsuario.id)
+
             navigate("/dashboard");
         } catch (err) {
             setError(err.message);
