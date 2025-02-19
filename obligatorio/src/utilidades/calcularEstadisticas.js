@@ -1,3 +1,5 @@
+import { obtenerFechaGMT3 } from "./formatearFecha";
+
 export const calcularMinutosPorActividad = (registros) => {
     return registros.reduce((acc, registro) => {
       const actividad = registro.actividad || "Desconocida";
@@ -17,7 +19,7 @@ export const calcularMinutosUltimosSieteDias = (registros) => {
   for (let i = 6; i >= 0; i--) {
     const fecha = new Date();
     fecha.setDate(hoy.getDate() - i);
-    const formatoFecha = fecha.toISOString().split("T")[0];
+    const formatoFecha = obtenerFechaGMT3(fecha);
     ultimosSieteDias.push({ fecha: formatoFecha, minutos: 0 });
   }
   

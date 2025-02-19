@@ -4,6 +4,7 @@ import { addActividad } from "../services/actividadesService";
 import { setRegistros } from "../redux/features/sliceRegistros";
 import { Form, Button, Alert } from "react-bootstrap";
 import SelectActividades from "./SelectActividades";
+import { obtenerFechaGMT3 } from "../utilidades/formatearFecha";
 
 const FormularioRegistro = () => {
   const idUsuario = localStorage.getItem("id")
@@ -24,9 +25,15 @@ const FormularioRegistro = () => {
       setError("Todos los campos son obligatorios.");
       return;
     }
+
+    if(tiempo<=0){
+      setError("Debe ingresar un valor positivo");
+      return;
+    }
   
-    const fechaSeleccionada = new Date(fecha);
-    const fechaActual = new Date();
+    const fechaSeleccionada = obtenerFechaGMT3(new Date(fecha));
+    const fechaActual = obtenerFechaGMT3();
+
     if (fechaSeleccionada > fechaActual) {
       setError("La fecha no puede ser futura.");
       return;
@@ -83,7 +90,14 @@ const FormularioRegistro = () => {
           type="number" 
           placeholder="Ejemplo: 30"
           value={tiempo}
-          onChange={(e) => setTiempo(e.target.value)}
+          min="1"
+          onChange={(e) => {
+            const valor = Number(e.target.value)
+            if(valor>0 || e.target.value===""){
+              setTiempo(e.target.value)
+            }
+          }
+        }
         />
       </Form.Group>
 
@@ -92,7 +106,8 @@ const FormularioRegistro = () => {
         <Form.Control 
           type="date"
           value={fecha}
-          onChange={(e) => setFecha(e.target.value)}
+          onChange={(e) => setFecha(obtenerFechaGMT3(new Date(e.target.value)))}
+          max={obtenerFechaGMT3()}
         />
       </Form.Group>
 
