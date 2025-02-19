@@ -30,11 +30,22 @@ const FormularioRegistro = () => {
       setError("Debe ingresar un valor positivo");
       return;
     }
-  
-    const fechaSeleccionada = obtenerFechaGMT3(new Date(fecha));
-    const fechaActual = obtenerFechaGMT3();
+    
+    const fechaSeleccionada = new Date(`${fecha}T00:00:00`); 
+    const fechaActual = new Date();
 
-    if (fechaSeleccionada > fechaActual) {
+    const fechaSeleccionadaNormalizada = new Date(
+      fechaSeleccionada.getFullYear(),
+      fechaSeleccionada.getMonth(),
+      fechaSeleccionada.getDate()
+    );
+    const fechaActualNormalizada = new Date(
+      fechaActual.getFullYear(),
+      fechaActual.getMonth(),
+      fechaActual.getDate()
+    );
+
+    if (fechaSeleccionadaNormalizada > fechaActualNormalizada) {
       setError("La fecha no puede ser futura.");
       return;
     }
@@ -106,7 +117,7 @@ const FormularioRegistro = () => {
         <Form.Control 
           type="date"
           value={fecha}
-          onChange={(e) => setFecha(obtenerFechaGMT3(new Date(e.target.value)))}
+          onChange={(e) => setFecha(e.target.value)}
           max={obtenerFechaGMT3()}
         />
       </Form.Group>
