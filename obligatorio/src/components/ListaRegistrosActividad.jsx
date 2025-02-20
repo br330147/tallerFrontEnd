@@ -1,27 +1,16 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { obtenerRegistrosActividad, eliminarRegistroActividad } from "../services/registrosActividadService";
-import { setRegistros, eliminarRegistroRedux } from "../redux/features/sliceRegistros";
+import { useState } from "react";
+import { useDispatch,} from "react-redux";
+import { eliminarRegistroActividad } from "../services/registrosActividadService";
+import { eliminarRegistroRedux } from "../redux/features/sliceRegistros";
 import { Container, Table, Form } from "react-bootstrap";
 import RegistroActividad from "./RegistroActividad"; 
+import PropTypes from "prop-types";
 
-const ListaRegistrosActividad = () => {
+const ListaRegistrosActividad = ({registros}) => {
   const idUsuario = localStorage.getItem("id")
   const token = localStorage.getItem("token")
-  const actividades = useSelector((state) => state.actividadesDisponibles.actividades)
-  const registros = useSelector((state) => state.registros.registros);
   const dispatch = useDispatch();
   const [filtro, setFiltro] = useState("todos");
-
-  useEffect(() => {
-    if (idUsuario && token && actividades.length > 0) {
-      obtenerRegistrosActividad(idUsuario, token, actividades)
-        .then((data) => {
-          dispatch(setRegistros(data));
-        })
-        .catch((error) => console.error("Error cargando registros:", error));
-    }
-  }, [dispatch, idUsuario, token, actividades]);
 
   const handleEliminar = async (idRegistro) => {
     try {
@@ -34,7 +23,7 @@ const ListaRegistrosActividad = () => {
 
   const filtrarRegistros = (registros) => {
     const hoy = new Date();
-    return registros.filter(registro => {
+    return registros.filter((registro) => {
       const fechaRegistro = new Date(registro.fecha);
       if (filtro === "semana") {
         return (hoy - fechaRegistro) / (1000 * 60 * 60 * 24) <= 7;
@@ -77,5 +66,9 @@ const ListaRegistrosActividad = () => {
     </Container>
   );
 };
+
+ListaRegistrosActividad.propTypes={
+  registros: PropTypes.array,
+}
 
 export default ListaRegistrosActividad;

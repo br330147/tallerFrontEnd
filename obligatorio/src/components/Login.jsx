@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { loginUser } from "../services/loginService.js";
 import { useNavigate } from "react-router-dom";
-import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Alert, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import '../estilos/estilos.css'
+import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 
 const Login = () => {
     const [usuario, setUsuarioInput] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
+    const [mostrarPassword, setMostrarPassword] = useState(false);
     const navigate = useNavigate();
 
     const handleLogin = async () => {
@@ -32,7 +35,7 @@ const Login = () => {
     return (
         <Container className="d-flex justify-content-center align-items-center vh-100">
             <Row>
-                <Col>
+                <Col className="login">
                     <h2 className="text-center mb-4">Iniciar Sesión</h2>
 
                     {error && <Alert variant="danger">{error}</Alert>}
@@ -50,15 +53,23 @@ const Login = () => {
 
                         <Form.Group className="mb-3" controlId="formPassword">
                             <Form.Label>Contraseña</Form.Label>
-                            <Form.Control
-                                type="password"
-                                placeholder="Ingrese su contraseña"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
+                            <InputGroup>
+                                <Form.Control
+                                    type={mostrarPassword ? "text" : "password"} 
+                                    placeholder="Ingrese su contraseña"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                                <Button
+                                    variant="outline-secondary"
+                                    onClick={() => setMostrarPassword(!mostrarPassword)} 
+                                >
+                                    {mostrarPassword ? <EyeSlashFill /> : <EyeFill />} 
+                                </Button>
+                            </InputGroup>
                         </Form.Group>
 
-                        <Button variant="primary" onClick={handleLogin} className="w-100" disabled={!usuario.trim() || !password.trim()}>
+                        <Button variant="primary" onClick={handleLogin} className="w-100 botonLogin" disabled={!usuario.trim() || !password.trim()}>
                             Ingresar
                         </Button>
                     </Form>

@@ -11,7 +11,7 @@ import Permitir from "./components/Permitir"
 
 import './App.css'
 // import Contenido from './components/Contenido'
-// import './estilos/estilos.css'
+import './estilos/estilos.css'
 
 
 const App = () => {

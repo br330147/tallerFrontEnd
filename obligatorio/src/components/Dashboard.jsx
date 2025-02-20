@@ -9,8 +9,9 @@ import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { obtenerActividades } from "../services/cargaActividadesService";
 import { setActividades } from "../redux/features/sliceActividadesDisponibles";
-
 import { Container, Row, Col } from "react-bootstrap";
+import { obtenerRegistrosActividad } from "../services/registrosActividadService";
+import { setRegistros } from "../redux/features/sliceRegistros";
 
 
 
@@ -18,7 +19,7 @@ const Dashboard = () => {
   const usuario = localStorage.getItem("usuario")
   const idUsuario = localStorage.getItem("id")
   const token = localStorage.getItem("token")
-
+  const registros = useSelector((state) => state.registros.registros)
   const actividades = useSelector((state) => state.actividadesDisponibles.actividades);
   const dispatch = useDispatch();
 
@@ -26,18 +27,33 @@ const Dashboard = () => {
     const fetchActividades = async () => {
       // console.log("obtenemos act para el usuario usuario:", idUsuario);
       try {
-        const actividades = await obtenerActividades(idUsuario, token);
+        const actividadesObtenidas = await obtenerActividades(idUsuario, token);
         // console.log("actividades obtenidas:", actividades);
-        dispatch(setActividades(actividades));
+        dispatch(setActividades(actividadesObtenidas));
       } catch (error) {
         console.error("Error obteniendo actividades:", error);
       }
     };
 
+    const fetchRegistros = async () =>{
+      if(actividades.length>0){
+        try{
+          const registrosObtenidos = await obtenerRegistrosActividad(idUsuario,token,actividades)
+          dispatch(setRegistros(registrosObtenidos));
+        }catch(error){
+          console.error("Error cargando:",error)
+        }
+      }
+    }
+
     if (idUsuario && token && actividades.length === 0) {
       fetchActividades();
     }
-  }, [dispatch, idUsuario, token, actividades.length]);
+
+    if(idUsuario && token){
+      fetchRegistros();
+    }
+  }, [dispatch, idUsuario, token, actividades]);
 
   return (
     <Container fluid className="mt-4">
@@ -67,7 +83,7 @@ const Dashboard = () => {
         </Col>
 
         <Col lg={6} md={12}>
-          <ListaRegistrosActividad />
+          <ListaRegistrosActividad registros={registros}/>
         </Col>
 
         <Col lg={6} md={12}>
