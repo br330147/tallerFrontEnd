@@ -89,7 +89,7 @@ const FormularioRegistro = () => {
   
 
   return (
-    <Form>
+    <Form className="mt-5 formRegistroActividad">
       {error && <Alert variant="danger">{error}</Alert>}
       {exito && <Alert variant="success">{exito}</Alert>}
 
@@ -122,7 +122,7 @@ const FormularioRegistro = () => {
         />
       </Form.Group>
 
-      <Button variant="primary" onClick={handleRegistro}>
+      <Button  className="botonRegistro" variant="primary" onClick={handleRegistro}>
         Registrar Ejercicio
       </Button>
     </Form>

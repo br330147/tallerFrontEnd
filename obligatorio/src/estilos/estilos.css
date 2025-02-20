@@ -5,7 +5,7 @@ body{
     
 }
 
-.login{
+.login,.registro,.formRegistroActividad{
     color: #ad4f2c;
     background-color: rgba(0, 0, 0, 0.678);
     border-radius: 10px;
@@ -13,25 +13,48 @@ body{
     font-weight: bolder;
 }
 
-.login input{
+.login input,.registro input,.formRegistroActividad input{
     color:#ad4f2c !important;
 }
 
-.login p a{
+
+.login p a, .registro p a{
     color:#c45428;
 }
 
-.login p a:hover{
+.login p a:hover, .registro p a:hover{
     color:#b4d6eb;
 }
 
-.botonLogin{
+.botonLogin,.botonRegistro{
     background-color: #ad4f2c !important;
     border-color: #ad4f2c !important ;
 }
 
-.botonLogin:hover{
+.botonLogin:hover,.botonRegistro:hover{
     background-color: #b4d6eb !important;
     border-color: #b4d6eb !important ;
     color:#ad4f2c !important;
+}
+
+.registro select{
+    color: #ad4f2c;
+}
+
+.dashboard{
+    background-size:auto;
+    background-color: black;
+}
+
+.d-flex{
+    display:flex !important;
+    justify-content: center !important;
+}
+
+.primerCuadrante{
+    padding: 1rem 8rem !important;
+}
+
+.cuadranteRegistro{
+    background-color: transparent !important;
 }

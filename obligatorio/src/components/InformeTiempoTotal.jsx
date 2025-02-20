@@ -7,7 +7,7 @@ const InformeTiempoTotal = () => {
   const { tiempoTotal } = calcularTiempoTotalDiarioYAyer(registros);
 
   return (
-    <Card className="p-3 text-center h-100">
+    <Card className="p-3 text-center  justify-content-center h-100">
       <h4>Tiempo Total Registrado</h4>
       <p className="fw-bold">{tiempoTotal} minutos</p>
     </Card>

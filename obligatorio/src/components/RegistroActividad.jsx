@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
-// import { obtenerFechaGMT3 } from "../utilidades/formatearFecha";
 
 const RegistroActividad = ({ registro, onEliminar }) => {
     return (

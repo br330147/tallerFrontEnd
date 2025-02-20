@@ -3,6 +3,7 @@ import { registroUser } from "../services/registroService"; // Ahora importamos 
 import { getPaises } from "../services/paisesService";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
+import '../estilos/estilos.css'
 
 const Registro = () => {
   const [usuario, setUsuarioInput] = useState("");
@@ -50,7 +51,7 @@ const Registro = () => {
   return (
     <Container className="d-flex justify-content-center align-items-center vh-100">
       <Row>
-        <Col>
+        <Col className="registro">
           <h2 className="text-center mb-4">Registrarse</h2>
 
           {error && <Alert variant="danger">{error}</Alert>}
@@ -96,7 +97,7 @@ const Registro = () => {
                 </Form.Select>
               )}
             </Form.Group>
-            <Button variant="success" onClick={handleRegistro} className="w-100" disabled={!usuario.trim() || !password.trim() || !idPais}>
+            <Button variant="success" onClick={handleRegistro} className="w-100 botonRegistro"  disabled={!usuario.trim() || !password.trim() || !idPais}>
               Registrarse
             </Button>
           </Form>

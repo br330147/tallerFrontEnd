@@ -12,7 +12,7 @@ import { setActividades } from "../redux/features/sliceActividadesDisponibles";
 import { Container, Row, Col } from "react-bootstrap";
 import { obtenerRegistrosActividad } from "../services/registrosActividadService";
 import { setRegistros } from "../redux/features/sliceRegistros";
-
+import '../estilos/estilos.css'
 
 
 const Dashboard = () => {
@@ -56,7 +56,7 @@ const Dashboard = () => {
   }, [dispatch, idUsuario, token, actividades]);
 
   return (
-    <Container fluid className="mt-4">
+    <Container fluid className="dashboard">
       <Row className="mb-3">
         <Col className="text-end">
           <BotonLogout />
@@ -66,9 +66,8 @@ const Dashboard = () => {
       <h2 className="text-center mb-4">Bienvenido, {usuario} - ID: {idUsuario}</h2>
 
       <Row className="g-4">
-        <Col lg={6} md={12}>
-          <FormularioRegistro />
-          <Row className="mt-3 d-flex align-items-stretch">
+        <Col lg={6} md={12} className="primerCuadrante">
+          <Row className="m-auto d-flex">
             <Col md={6} xs={12} className="d-flex">
               <InformeTiempoTotal />
             </Col>
@@ -76,9 +75,10 @@ const Dashboard = () => {
               <InformeTiempoDiario />
             </Col>
           </Row>
+          <FormularioRegistro/>
         </Col>
 
-        <Col lg={6} md={12}>
+        <Col lg={6} md={12} className="d-flex">
           <GraficoMinutosPorActividad />
         </Col>
 
