@@ -58,13 +58,11 @@ const Dashboard = () => {
   return (
     <Container fluid className="dashboard">
       <Row className="mb-3">
-        <Col className="text-end">
+        <Col className="text-center pt-4">
           <BotonLogout />
         </Col>
       </Row>
-
-      <h2 className="text-center mb-4">Bienvenido, {usuario} - ID: {idUsuario}</h2>
-
+      <h2 className="text-center mb-4 tituloDash">Bienvenido {usuario} - ID: {idUsuario}</h2>
       <Row className="g-4">
         <Col lg={6} md={12} className="primerCuadrante">
           <Row className="m-auto d-flex">

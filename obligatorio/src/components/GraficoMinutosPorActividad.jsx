@@ -20,10 +20,10 @@ const GraficoMinutosPorActividad = () => {
   ];
 
   return (
-    <Card className="mt-3 p-3 text-center d-flex justify-content-center align-items-center cuadranteRegistro">
+    <Card className="p-3 justify-content-center align-items-center cuadranteMinutosPorActividad">
       <h4>Minutos por Actividad</h4>
       {datos.length > 0 ? (
-        <PieChart width={800} height={400}>
+        <PieChart width={900} height={400}>
           <Pie
             data={datos}
             cx="50%"

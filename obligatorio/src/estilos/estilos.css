@@ -1,60 +1,152 @@
-body{
-    background-image: url("../img/fondo2.webp");
-    background-repeat: no-repeat;
-    background-size: cover;
-    
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap");
+
+body {
+  background-image: url("../img/fondo2.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: quicksand !important;
 }
 
-.login,.registro,.formRegistroActividad{
-    color: #ad4f2c;
-    background-color: rgba(0, 0, 0, 0.678);
-    border-radius: 10px;
-    padding: 20px;
-    font-weight: bolder;
+.login,
+.registro,
+.formRegistroActividad {
+  color: #ad4f2c;
+  background-color: #0000009a !important;
+  border-radius: 10px;
+  padding: 20px;
+  font-weight: bolder;
 }
 
-.login input,.registro input,.formRegistroActividad input{
-    color:#ad4f2c !important;
+.login input,
+.registro input,
+.formRegistroActividad input {
+  color: #ad4f2c !important;
 }
 
-
-.login p a, .registro p a{
-    color:#c45428;
+.login p a,
+.registro p a {
+  color: #c45428;
 }
 
-.login p a:hover, .registro p a:hover{
-    color:#b4d6eb;
+.login p a:hover,
+.registro p a:hover {
+  color: #b4d6eb;
 }
 
-.botonLogin,.botonRegistro{
-    background-color: #ad4f2c !important;
-    border-color: #ad4f2c !important ;
+.botonLogin,
+.botonRegistro {
+  background-color: #ad4f2c !important;
+  border-color: #ad4f2c !important;
 }
 
-.botonLogin:hover,.botonRegistro:hover{
-    background-color: #b4d6eb !important;
-    border-color: #b4d6eb !important ;
-    color:#ad4f2c !important;
+.botonLogin:hover,
+.botonRegistro:hover {
+  background-color: #b4d6eb !important;
+  border-color: #b4d6eb !important ;
+  color: #ad4f2c !important;
 }
 
-.registro select{
-    color: #ad4f2c;
+.registro select {
+  color: #ad4f2c;
 }
 
-.dashboard{
-    background-size:auto;
-    background-color: black;
+.tituloDash {
+  color: #000000;
+  font-family: quicksand !important;
+  font-size: 3rem;
+  text-shadow: #000000 0px 0px 20px;
+  margin: auto;
+  width: 50%;
 }
 
-.d-flex{
-    display:flex !important;
-    justify-content: center !important;
+.dashboard {
+  background-image: url("../img/AdobeStock_219495150.jpeg");
+  background-size: cover;
 }
 
-.primerCuadrante{
-    padding: 1rem 8rem !important;
+.d-flex {
+  display: flex !important;
+  justify-content: center !important;
 }
 
-.cuadranteRegistro{
-    background-color: transparent !important;
+.primerCuadrante {
+  padding: 1rem 8rem !important;
+  background-color: #0000009a !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 10px;
 }
+
+.cuadranteMinutosPorActividad {
+  background-color: #0000009a !important;
+  border-radius: 10px !important;
+}
+
+.cuadranteMinutosPorActividad h4 {
+  color: #ad4f2c !important;
+  font-size: 30px;
+  font-weight: bolder;
+  background-color: #0000009a !important;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.tiempoTotalRegistrado {
+  background-color: #0000009a !important;
+  color: #ffffff !important;
+  font-size: 20px;
+}
+
+.minTotalRegistrado {
+  font-size: 25px;
+  color: #ad4f2c;
+}
+
+.tiempoDiarioRegistrado {
+  background-color: #0000009a !important;
+  color: #ffffff !important;
+}
+
+.tiempoDiarioRegistrado p {
+  color: #ad4f2c !important;
+}
+
+.ayer {
+  margin-bottom: 0px !important;
+  font-size: 25px;
+}
+
+.minutosAyer {
+  margin: 0px !important;
+}
+
+.minutosAyer,
+.minutosHoy {
+  font-size: 25px;
+  color: #ad4f2c;
+  font-weight: bolder;
+}
+
+.evolucionPersonal {
+  background-color: #ad4f2c !important;
+}
+
+.evolucionPersonal p {
+  color: #ffffff !important;
+  font-size: 25px;
+  margin: auto;
+}
+
+.btnCerrarSesion {
+  background-color: #000000 !important;
+}
+
+.btnCerrarSesion:hover {
+  background-color: #ad4f2c !important;
+}
+
+/* 
+arreglar bordes
+
+
+*/
