@@ -1,26 +1,28 @@
 import FormularioRegistro from "./AgregarActividad";
 import ListaRegistrosActividad from "./ListaRegistrosActividad";
 import BotonLogout from "./Logout";
-import InformeTiempoTotal from "./InformeTiempoTotal"
+import InformeTiempoTotal from "./InformeTiempoTotal";
 import InformeTiempoDiario from "./InformeTiempoDiario";
 import GraficoMinutosPorActividad from "./GraficoMinutosPorActividad";
 import GraficoMinutosUltimosSieteDias from "./GraficoMinutosUltimosSieteDias";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { obtenerActividades } from "../services/cargaActividadesService";
 import { setActividades } from "../redux/features/sliceActividadesDisponibles";
 import { Container, Row, Col } from "react-bootstrap";
 import { obtenerRegistrosActividad } from "../services/registrosActividadService";
 import { setRegistros } from "../redux/features/sliceRegistros";
-import '../estilos/estilos.css'
-import Pagination from 'react-bootstrap/Pagination';
+import "../estilos/estilos.css";
+import Pagination from "react-bootstrap/Pagination";
 
 const Dashboard = () => {
-  const usuario = localStorage.getItem("usuario")
-  const idUsuario = localStorage.getItem("id")
-  const token = localStorage.getItem("token")
-  const registros = useSelector((state) => state.registros.registros)
-  const actividades = useSelector((state) => state.actividadesDisponibles.actividades);
+  const usuario = localStorage.getItem("usuario");
+  const idUsuario = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+  const registros = useSelector((state) => state.registros.registros);
+  const actividades = useSelector(
+    (state) => state.actividadesDisponibles.actividades
+  );
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(registros.length / 5); // Suponiendo 5 registros por página
@@ -37,22 +39,26 @@ const Dashboard = () => {
       }
     };
 
-    const fetchRegistros = async () =>{
-      if(actividades.length>0){
-        try{
-          const registrosObtenidos = await obtenerRegistrosActividad(idUsuario,token,actividades)
+    const fetchRegistros = async () => {
+      if (actividades.length > 0) {
+        try {
+          const registrosObtenidos = await obtenerRegistrosActividad(
+            idUsuario,
+            token,
+            actividades
+          );
           dispatch(setRegistros(registrosObtenidos));
-        }catch(error){
-          console.error("Error cargando:",error)
+        } catch (error) {
+          console.error("Error cargando:", error);
         }
       }
-    }
+    };
 
     if (idUsuario && token && actividades.length === 0) {
       fetchActividades();
     }
 
-    if(idUsuario && token){
+    if (idUsuario && token) {
       fetchRegistros();
     }
   }, [dispatch, idUsuario, token, actividades]);
@@ -71,7 +77,9 @@ const Dashboard = () => {
         </Col>
       </Row>
 
-      <h2 className="text-center mb-4 tituloDash">Bienvenido {usuario} - ID: {idUsuario}</h2>
+      <h2 className="text-center mb-4 tituloDash">
+        Bienvenido {usuario} - ID: {idUsuario}
+      </h2>
 
       <Row className="g-4">
         <Col lg={6} md={12} className="primerCuadrante">
@@ -87,20 +95,38 @@ const Dashboard = () => {
         </Col>
 
         <Col lg={6} md={12} className="cuadranteListaRegistros">
-          <ListaRegistrosActividad registros={registros.slice((currentPage - 1) * 6, currentPage * 6)} />
+          <ListaRegistrosActividad
+            registros={registros.slice((currentPage - 1) * 6, currentPage * 6)}
+          />
 
           <Pagination className="mt-3 justify-content-center">
-            <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1} />
-            <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
-            
+            <Pagination.First
+              onClick={() => handlePageChange(1)}
+              disabled={currentPage === 1}
+            />
+            <Pagination.Prev
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            />
+
             {[...Array(totalPages)].map((_, index) => (
-              <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => handlePageChange(index + 1)}>
+              <Pagination.Item
+                key={index + 1}
+                active={index + 1 === currentPage}
+                onClick={() => handlePageChange(index + 1)}
+              >
                 {index + 1}
               </Pagination.Item>
             ))}
 
-            <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
-            <Pagination.Last onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages} />
+            <Pagination.Next
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            />
+            <Pagination.Last
+              onClick={() => handlePageChange(totalPages)}
+              disabled={currentPage === totalPages}
+            />
           </Pagination>
         </Col>
 
