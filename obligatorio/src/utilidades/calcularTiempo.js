@@ -15,7 +15,6 @@ export const calcularTiempoTotalDiarioYAyer = (registros) => {
 
     const tiempoAyer = registros
         .filter(registro => {
-            console.log(`Comparando: ${registro.fecha} === ${ayerFormato}`);
             return registro.fecha === ayerFormato;
         })
         .reduce((total, registro) => total + Number(registro.tiempo), 0);
