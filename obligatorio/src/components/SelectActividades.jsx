@@ -2,6 +2,7 @@ import PropTypes from "prop-types"; // usamos cuando un componente recibe props 
 import { useSelector } from "react-redux";
 import { Form, Spinner } from "react-bootstrap";
 
+
 const SelectActividades = ({ idActividad, setIdActividad }) => {
   const actividades = useSelector((state) => state.actividadesDisponibles.actividades);
   

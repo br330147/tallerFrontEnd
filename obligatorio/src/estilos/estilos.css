@@ -145,6 +145,11 @@ body {
   background-color: #ad4f2c !important;
 }
 
+.cuadranteListaRegistros {
+    background-color: #0000009a !important;
+    border-radius: 10px;
+}
+
 /* 
 cambie de lugar registro de actividades por la gráfica, así quedan en conjunto
 poner paginado
