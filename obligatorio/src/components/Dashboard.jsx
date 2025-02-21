@@ -76,12 +76,12 @@ const Dashboard = () => {
           <FormularioRegistro/>
         </Col>
 
-        <Col lg={6} md={12} className="d-flex">
-          <GraficoMinutosPorActividad />
-        </Col>
-
         <Col lg={6} md={12}>
           <ListaRegistrosActividad registros={registros}/>
+        </Col>
+
+        <Col lg={6} md={12} className="d-flex">
+          <GraficoMinutosPorActividad />
         </Col>
 
         <Col lg={6} md={12}>
