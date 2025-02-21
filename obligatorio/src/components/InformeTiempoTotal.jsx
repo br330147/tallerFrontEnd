@@ -4,8 +4,7 @@ import { calcularTiempoTotalDiarioYAyer } from "../utilidades/calcularTiempo";
 
 const InformeTiempoTotal = () => {
   const registros = useSelector((state) => state.registros.registros);
-  const { tiempoTotal } = calcularTiempoTotalDiarioYAyer(registros);
-  const { tiempoAyer } = calcularTiempoTotalDiarioYAyer(registros);
+  const { tiempoTotal, tiempoAyer } = calcularTiempoTotalDiarioYAyer(registros);
 
   return (
     <Card className="p-3 text-center justify-content-center h-100 tiempoTotalRegistrado">
