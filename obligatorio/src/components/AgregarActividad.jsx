@@ -22,9 +22,11 @@ const FormularioRegistro = () => {
 
   useEffect(() => {
     const hoy = new Date();
-    const fechaISO = hoy.toISOString().split("T")[0]; // Formato YYYY-MM-DD para el input date
+    hoy.setMinutes(hoy.getMinutes() - hoy.getTimezoneOffset()); // Ajuste de zona horaria
+    const fechaISO = hoy.toISOString().split("T")[0]; 
     setFecha(fechaISO);
   }, []);
+  
 
   const handleRegistro = async () => {
     if (!idActividad || !tiempo || !fecha) {
