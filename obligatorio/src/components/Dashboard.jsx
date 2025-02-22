@@ -25,7 +25,7 @@ const Dashboard = () => {
   );
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(registros.length / 5); // Suponiendo 5 registros por página
+  const totalPages = Math.ceil(registros.length / 6); // Suponiendo 5 registros por página
 
   useEffect(() => {
     const fetchActividades = async () => {

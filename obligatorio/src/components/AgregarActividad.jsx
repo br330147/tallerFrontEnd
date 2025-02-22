@@ -120,7 +120,7 @@ const FormularioRegistro = () => {
         <Form.Label>Fecha</Form.Label>
         <Form.Control 
           type="date"
-          value={fecha}
+          value={obtenerFechaGMT3()}
           onChange={(e) => setFecha(e.target.value)}
           max={obtenerFechaGMT3()}
           />
