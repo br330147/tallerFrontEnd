@@ -11,7 +11,7 @@ const InformeTiempoTotal = () => {
       <h4>Tiempo total registrado</h4>
       <p className="fw-bold minTotalRegistrado">{tiempoTotal} minutos</p>
       <p>
-        <span className="ayer">Ayer:</span>{" "}
+        <span className="ayer">Ayer: <br /></span>
         <span className="minutosAyer">{tiempoAyer} minutos</span>
       </p>
     </Card>
