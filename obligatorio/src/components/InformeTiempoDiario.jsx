@@ -5,7 +5,8 @@ import EvolucionPersonal from "./EvolucionPersonal";
 
 const InformeTiempoDiario = () => {
   const registros = useSelector((state) => state.registros.registros);
-  const { tiempoDiario, tiempoAyer } = calcularTiempoTotalDiarioYAyer(registros);
+  const { tiempoDiario, tiempoAyer } =
+    calcularTiempoTotalDiarioYAyer(registros);
 
   return (
     <Card className="p-3 text-center h-100 tiempoDiarioRegistrado">
@@ -17,4 +18,3 @@ const InformeTiempoDiario = () => {
 };
 
 export default InformeTiempoDiario;
-

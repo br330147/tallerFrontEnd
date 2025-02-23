@@ -1,5 +1,7 @@
+import { obtenerFechaGMT3 } from "./formatearFecha";
+
 export const calcularTiempoTotalDiarioYAyer = (registros) => {
-    const hoy = new Date();
+    const hoy = new Date(obtenerFechaGMT3());
     const ayer = new Date(hoy); 
     ayer.setDate(hoy.getDate() - 1);
 
@@ -19,6 +21,6 @@ export const calcularTiempoTotalDiarioYAyer = (registros) => {
         })
         .reduce((total, registro) => total + Number(registro.tiempo), 0);
 
-    return { tiempoTotal, tiempoDiario, tiempoAyer };
+    return { tiempoTotal, tiempoDiario, tiempoAyer};
 };
   
