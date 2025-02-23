@@ -38,7 +38,9 @@ const ListaRegistrosActividad = ({ registros }) => {
 
   return (
     <Container>
-      <h3 className="titleRegistroAct text-center mt-3 mb-3">Registros de Actividades</h3>
+      <h3 className="titleRegistroAct text-center mt-3 mb-3">
+        Registros de Actividades
+      </h3>
       <Form.Select onChange={(e) => setFiltro(e.target.value)}>
         <option value="todos">Todos</option>
         <option value="semana">Última Semana</option>
