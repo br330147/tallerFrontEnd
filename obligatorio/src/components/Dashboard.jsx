@@ -148,7 +148,6 @@ const Dashboard = () => {
       </Row>
     </Container>
   );
-  
 };
 
 export default Dashboard;

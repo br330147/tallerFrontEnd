@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { useDispatch,} from "react-redux";
+import { useDispatch } from "react-redux";
 import { eliminarRegistroActividad } from "../services/registrosActividadService";
 import { eliminarRegistroRedux } from "../redux/features/sliceRegistros";
 import { Container, Table, Form } from "react-bootstrap";
-import RegistroActividad from "./RegistroActividad"; 
+import RegistroActividad from "./RegistroActividad";
 import PropTypes from "prop-types";
 
-const ListaRegistrosActividad = ({registros}) => {
-  const idUsuario = localStorage.getItem("id")
-  const token = localStorage.getItem("token")
+const ListaRegistrosActividad = ({ registros }) => {
+  const idUsuario = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const [filtro, setFiltro] = useState("todos");
 
@@ -34,6 +34,8 @@ const ListaRegistrosActividad = ({registros}) => {
     });
   };
 
+  const registrosFiltrados = filtrarRegistros(registros);
+
   return (
     <Container>
       <h3 className="titleRegistroAct text-center mt-3 mb-3">Registros de Actividades</h3>
@@ -54,21 +56,29 @@ const ListaRegistrosActividad = ({registros}) => {
           </tr>
         </thead>
         <tbody>
-          {filtrarRegistros(registros).map((registro) => (
-            <RegistroActividad
-              key={registro.id}
-              registro={registro}
-              onEliminar={handleEliminar}
-            />
-          ))}
+          {registrosFiltrados.length === 0 ? (
+            <tr>
+              <td colSpan="5" className="text-center">
+                <strong>No hay registro de actividades ¡Registra una!</strong>
+              </td>
+            </tr>
+          ) : (
+            registrosFiltrados.map((registro) => (
+              <RegistroActividad
+                key={registro.id}
+                registro={registro}
+                onEliminar={handleEliminar}
+              />
+            ))
+          )}
         </tbody>
       </Table>
     </Container>
   );
 };
 
-ListaRegistrosActividad.propTypes={
+ListaRegistrosActividad.propTypes = {
   registros: PropTypes.array,
-}
+};
 
 export default ListaRegistrosActividad;
