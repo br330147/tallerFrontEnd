@@ -92,14 +92,14 @@ const Dashboard = () => {
           <BotonLogout />
         </Col>
       </Row>
-
+  
       <h2 className="text-center mb-4 tituloDash">
         Bienvenido {usuario} - ID: {idUsuario}
       </h2>
-
-      <Row className="g-4">
-        <Col lg={6} md={12} className="primerCuadrante">
-          <Row className="m-auto d-flex">
+  
+      <Row className="g-4 justify-content-center"> {/* Asegura que los elementos estén centrados */}
+        <Col lg={5} md={12} className="primerCuadrante mx-5"> {/* Añade mx-3 para margen lateral */}
+          <Row className="m-auto d-flex mt-2">
             <Col md={6} xs={12} className="d-flex">
               <InformeTiempoTotal />
             </Col>
@@ -109,18 +109,18 @@ const Dashboard = () => {
           </Row>
           <FormularioRegistro />
         </Col>
-
-        <Col lg={6} md={12} className="cuadranteListaRegistros">
+  
+        <Col lg={5} md={12} className="cuadranteListaRegistros mx-3"> {/* Añade mx-3 para margen lateral */}
           {/* Pasamos el filtro al componente y usamos los registros paginados */}
           <ListaRegistrosActividad 
             registros={registrosPaginados} 
             setFiltro={setFiltro}
           />
-
+  
           <Pagination className="mt-3 justify-content-center">
             <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1} />
             <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
-
+  
             {[...Array(totalPages)].map((_, index) => (
               <Pagination.Item
                 key={index + 1}
@@ -130,26 +130,25 @@ const Dashboard = () => {
                 {index + 1}
               </Pagination.Item>
             ))}
-
+  
             <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
             <Pagination.Last onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages} />
           </Pagination>
         </Col>
-
-        <Col lg={6} md={12} className="d-flex">
+      </Row>
+  
+      <Row className="g-4 justify-content-center">
+        <Col lg={5} md={12} className="d-flex justify-content-center mx-3">
           <GraficoMinutosPorActividad />
         </Col>
-
-        <Col lg={6} md={12}>
-          <Row>
-            <Col md={12}>
-              <GraficoMinutosUltimosSieteDias />
-            </Col>
-          </Row>
+  
+        <Col lg={5} md={12} className="d-flex justify-content-center mx-3">
+          <GraficoMinutosUltimosSieteDias />
         </Col>
       </Row>
     </Container>
   );
+  
 };
 
 export default Dashboard;

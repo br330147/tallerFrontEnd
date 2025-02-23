@@ -75,11 +75,14 @@ body {
   margin-left: auto !important;
   margin-right: auto !important;
   border-radius: 10px;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 
 .cuadranteMinutosPorActividad {
   background-color: #0000009a !important;
   border-radius: 10px !important;
+  margin-top: 20px;
 }
 
 .cuadranteMinutosPorActividad h4 {
