@@ -25,43 +25,59 @@ const Dashboard = () => {
   );
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(registros.length / 6); // Suponiendo 5 registros por página
+  const [filtro, setFiltro] = useState("todos");
 
   useEffect(() => {
     const fetchActividades = async () => {
-      // console.log("obtenemos act para el usuario usuario:", idUsuario);
       try {
         const actividadesObtenidas = await obtenerActividades(idUsuario, token);
-        // console.log("actividades obtenidas:", actividades);
         dispatch(setActividades(actividadesObtenidas));
       } catch (error) {
         console.error("Error obteniendo actividades:", error);
       }
     };
 
-    const fetchRegistros = async () => {
-      if (actividades.length > 0) {
-        try {
-          const registrosObtenidos = await obtenerRegistrosActividad(
-            idUsuario,
-            token,
-            actividades
-          );
-          dispatch(setRegistros(registrosObtenidos));
-        } catch (error) {
-          console.error("Error cargando:", error);
-        }
-      }
-    };
-
     if (idUsuario && token && actividades.length === 0) {
       fetchActividades();
     }
+  }, [dispatch, idUsuario, token, actividades.length]);
 
-    if (idUsuario && token) {
+  useEffect(() => {
+    const fetchRegistros = async () => {
+      try {
+        const registrosObtenidos = await obtenerRegistrosActividad(
+          idUsuario,
+          token,
+          actividades
+        );
+        dispatch(setRegistros(registrosObtenidos));
+      } catch (error) {
+        console.error("Error cargando:", error);
+      }
+    };
+
+    if (idUsuario && token && actividades.length > 0) {
       fetchRegistros();
     }
   }, [dispatch, idUsuario, token, actividades]);
+
+  // Función para filtrar registros antes de paginarr
+  const filtrarRegistros = (registros) => {
+    const hoy = new Date();
+    return registros.filter((registro) => {
+      const fechaRegistro = new Date(registro.fecha);
+      if (filtro === "semana") {
+        return (hoy - fechaRegistro) / (1000 * 60 * 60 * 24) <= 7;
+      } else if (filtro === "mes") {
+        return (hoy - fechaRegistro) / (1000 * 60 * 60 * 24) <= 30;
+      }
+      return true;
+    });
+  };
+
+  const registrosFiltrados = filtrarRegistros(registros);
+  const totalPages = Math.ceil(registrosFiltrados.length / 6);
+  const registrosPaginados = registrosFiltrados.slice((currentPage - 1) * 6, currentPage * 6);
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -95,19 +111,15 @@ const Dashboard = () => {
         </Col>
 
         <Col lg={6} md={12} className="cuadranteListaRegistros">
-          <ListaRegistrosActividad
-            registros={registros.slice((currentPage - 1) * 6, currentPage * 6)}
+          {/* Pasamos el filtro al componente y usamos los registros paginados */}
+          <ListaRegistrosActividad 
+            registros={registrosPaginados} 
+            setFiltro={setFiltro}
           />
 
           <Pagination className="mt-3 justify-content-center">
-            <Pagination.First
-              onClick={() => handlePageChange(1)}
-              disabled={currentPage === 1}
-            />
-            <Pagination.Prev
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-            />
+            <Pagination.First onClick={() => handlePageChange(1)} disabled={currentPage === 1} />
+            <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
 
             {[...Array(totalPages)].map((_, index) => (
               <Pagination.Item
@@ -119,14 +131,8 @@ const Dashboard = () => {
               </Pagination.Item>
             ))}
 
-            <Pagination.Next
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            />
-            <Pagination.Last
-              onClick={() => handlePageChange(totalPages)}
-              disabled={currentPage === totalPages}
-            />
+            <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
+            <Pagination.Last onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages} />
           </Pagination>
         </Col>
 

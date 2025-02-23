@@ -85,7 +85,6 @@ body {
 .cuadranteMinutosPorActividad h4 {
   color: #ad4f2c !important;
   font-size: 30px;
-  font-weight: bolder;
   background-color: #0000009a !important;
   padding: 10px 20px;
   border-radius: 10px;
@@ -150,11 +149,16 @@ body {
     border-radius: 10px;
 }
 
-/* 
-cambie de lugar registro de actividades por la gráfica, así quedan en conjunto
-poner paginado
+.titleRegistroAct{
+  color: #ad4f2c !important;
+  font-size: 30px;
+  background-color: #0000009a !important;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
 
+/* 
 arreglar bordes
 loaders
-
+toasts
 */

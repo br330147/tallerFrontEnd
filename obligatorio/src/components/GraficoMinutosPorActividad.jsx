@@ -21,7 +21,7 @@ const GraficoMinutosPorActividad = () => {
 
   return (
     <Card className="p-3 justify-content-center align-items-center cuadranteMinutosPorActividad">
-      <h4>Minutos por Actividad</h4>
+      <h4>Minutos totales por actividad</h4>
       {datos.length > 0 ? (
         <PieChart width={900} height={400}>
           <Pie
