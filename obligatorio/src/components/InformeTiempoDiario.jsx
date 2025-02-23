@@ -5,17 +5,16 @@ import EvolucionPersonal from "./EvolucionPersonal";
 
 const InformeTiempoDiario = () => {
   const registros = useSelector((state) => state.registros.registros);
-  const { tiempoDiario, tiempoAyer } = calcularTiempoTotalDiarioYAyer(registros);
+  const { tiempoDiario, tiempoAyer } =
+    calcularTiempoTotalDiarioYAyer(registros);
 
   return (
-    <Card className="p-3 text-center justify-content-center h-100">
-      <h4>Tiempo Registrado Hoy</h4>
-      <p className="fw-bold">{tiempoDiario} minutos</p>
-      <p><strong>Ayer:</strong> {tiempoAyer} minutos</p>
+    <Card className="p-3 text-center h-100 tiempoDiarioRegistrado">
+      <h4>Tiempo registrado hoy</h4>
+      <p className="fw-bold minutosHoy">{tiempoDiario} minutos</p>
       <EvolucionPersonal tiempoDiario={tiempoDiario} tiempoAyer={tiempoAyer} />
     </Card>
   );
 };
 
 export default InformeTiempoDiario;
-

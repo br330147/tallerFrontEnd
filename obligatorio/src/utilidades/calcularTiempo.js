@@ -1,24 +1,26 @@
 import { obtenerFechaGMT3 } from "./formatearFecha";
 
 export const calcularTiempoTotalDiarioYAyer = (registros) => {
-
-    const hoy = new Date();
-    const ayer = new Date();
+    const hoy = new Date(obtenerFechaGMT3());
+    const ayer = new Date(hoy); 
     ayer.setDate(hoy.getDate() - 1);
-  
-    const hoyFormato = obtenerFechaGMT3(new Date(hoy.toISOString().split("T")[0])); // para el formato yyyy-mm-dd
-    const ayerFormato = obtenerFechaGMT3(new Date(ayer.toISOString().split("T")[0])); 
-  
+
+    // formato `YYYY-MM-DD`
+    const obtenerFechaSinHora = (fecha) => fecha.toISOString().split("T")[0];
+    const hoyFormato = obtenerFechaSinHora(hoy);
+    const ayerFormato = obtenerFechaSinHora(ayer);
     const tiempoTotal = registros.reduce((total, registro) => total + Number(registro.tiempo), 0);
-  
+
     const tiempoDiario = registros
-      .filter(registro => registro.fecha === hoyFormato)
-      .reduce((total, registro) => total + Number(registro.tiempo), 0);
-  
+        .filter(registro => registro.fecha === hoyFormato)
+        .reduce((total, registro) => total + Number(registro.tiempo), 0);
+
     const tiempoAyer = registros
-      .filter(registro => registro.fecha === ayerFormato)
-      .reduce((total, registro) => total + Number(registro.tiempo), 0);
-  
-    return { tiempoTotal, tiempoDiario, tiempoAyer };
-  };
+        .filter(registro => {
+            return registro.fecha === ayerFormato;
+        })
+        .reduce((total, registro) => total + Number(registro.tiempo), 0);
+
+    return { tiempoTotal, tiempoDiario, tiempoAyer};
+};
   

@@ -11,7 +11,7 @@ const EvolucionPersonal = ({ tiempoDiario, tiempoAyer }) => {
   }
 
   return (
-    <Card className="mt-2 p-2 text-center">
+    <Card className="mt-2 p-2 text-center evolucionPersonal">
       <p className="fw-bold">{mensaje}</p>
     </Card>
   );

@@ -1,3 +1,7 @@
-alsdlpasd
+suguerencias:
 
-ahora subo yo
+arreglar toast de eliminación
+loaders
+mensaje de bienvenida al registrarse?
+cambiar fondos
+footer con nuestros nombres

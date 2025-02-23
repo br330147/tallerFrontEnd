@@ -3,17 +3,19 @@ import { Card } from "react-bootstrap";
 import { calcularTiempoTotalDiarioYAyer } from "../utilidades/calcularTiempo";
 
 const InformeTiempoTotal = () => {
-  const registros = useSelector((state) => state.registros.registros); 
-  const { tiempoTotal } = calcularTiempoTotalDiarioYAyer(registros);
+  const registros = useSelector((state) => state.registros.registros);
+  const { tiempoTotal, tiempoAyer } = calcularTiempoTotalDiarioYAyer(registros);
 
   return (
-    <Card className="p-3 text-center h-100">
-      <h4>Tiempo Total Registrado</h4>
-      <p className="fw-bold">{tiempoTotal} minutos</p>
+    <Card className="p-3 text-center justify-content-center h-100 tiempoTotalRegistrado">
+      <h4>Tiempo total registrado</h4>
+      <p className="fw-bold minTotalRegistrado">{tiempoTotal} minutos</p>
+      <p>
+        <span className="ayer">Ayer: <br /></span>
+        <span className="minutosAyer">{tiempoAyer} minutos</span>
+      </p>
     </Card>
   );
 };
 
 export default InformeTiempoTotal;
-
-
