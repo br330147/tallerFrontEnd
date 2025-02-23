@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { registroUser } from "../services/registroService"; // Ahora importamos desde registroService.js
+import { registroUser } from "../services/registroService";
 import { getPaises } from "../services/paisesService";
 import { useNavigate } from "react-router-dom";
-import { Form, Button, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
-import '../estilos/estilos.css'
+import { Form, Button, Container, Row, Col, Alert, Spinner, Modal } from "react-bootstrap";
+import '../estilos/estilos.css';
 
 const Registro = () => {
   const [usuario, setUsuarioInput] = useState("");
@@ -12,6 +12,7 @@ const Registro = () => {
   const [idPais, setIdPais] = useState(""); 
   const [error, setError] = useState(null);
   const [loadingPaises, setLoadingPaises] = useState(true);
+  const [showModal, setShowModal] = useState(false); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,14 +39,19 @@ const Registro = () => {
     try {
       const datosUsuario = await registroUser(usuario, password, idPais);
 
-      localStorage.setItem("usuario", usuario)
-      localStorage.setItem("token", datosUsuario.apiKey)
-      localStorage.setItem("id", datosUsuario.id)
+      localStorage.setItem("usuario", usuario);
+      localStorage.setItem("token", datosUsuario.apiKey);
+      localStorage.setItem("id", datosUsuario.id);
 
-      navigate("/dashboard");
+      setShowModal(true);
     } catch (err) {
       setError(err.message);
     }
+  };
+
+  const handleRedirigir = () => {
+    setShowModal(false);
+    navigate("/dashboard");
   };
 
   return (
@@ -97,7 +103,7 @@ const Registro = () => {
                 </Form.Select>
               )}
             </Form.Group>
-            <Button variant="success" onClick={handleRegistro} className="w-100 botonRegistro"  disabled={!usuario.trim() || !password.trim() || !idPais}>
+            <Button variant="success" onClick={handleRegistro} className="w-100 botonRegistro" disabled={!usuario.trim() || !password.trim() || !idPais}>
               Registrarse
             </Button>
           </Form>
@@ -107,6 +113,26 @@ const Registro = () => {
           </p>
         </Col>
       </Row>
+
+      <Modal show={showModal} onHide={handleRedirigir} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>¡Bienvenido a MoveTrack, {usuario}!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>En esta web podrás:</p>
+          <ul>
+            <li>🏃‍♂️ Registrar tus actividades físicas.</li>
+            <li>📊 Ver estadísticas sobre tu rendimiento.</li>
+            <li>🔥 Desafiarte a mejorar cada día.</li>
+          </ul>
+          <p>¡Esperamos que disfrutes la experiencia!</p>
+        </Modal.Body>
+        <Modal.Footer className="justify-content-center">
+          <Button variant="success" onClick={handleRedirigir}>
+            ¡Vamos a eso!
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };

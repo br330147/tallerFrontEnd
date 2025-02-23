@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
-import { PieChart, Pie, Tooltip, Cell, Legend } from "recharts";
-import { Card } from "react-bootstrap";
+import { PieChart, Pie, Tooltip, Cell, Legend, ResponsiveContainer } from "recharts";
+import { Card, Table } from "react-bootstrap";
 import { calcularMinutosPorActividad } from "../utilidades/calcularEstadisticas";
+import "../estilos/estilos.css";
 
 const GraficoMinutosPorActividad = () => {
   const registros = useSelector((state) => state.registros.registros);
@@ -23,23 +24,49 @@ const GraficoMinutosPorActividad = () => {
     <Card className="p-3 mb-5 justify-content-center align-items-center cuadranteMinutosPorActividad">
       <h4>Minutos totales por actividad</h4>
       {datos.length > 0 ? (
-        <PieChart width={900} height={400}>
-          <Pie
-            data={datos}
-            cx="50%"
-            cy="50%"
-            outerRadius={120}
-            fill="#8884d8"
-            dataKey="value"
-            label={({ name, value, sesiones }) => `${name}: ${value} min. (Sesiones: ${sesiones})`}
-          >
-            {datos.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={colores[index % colores.length]} />
-            ))}
-          </Pie>
-          <Tooltip />
-          <Legend />
-        </PieChart>
+        <>
+          <div style={{ width: "100%", height: "350px" }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={datos}
+                  cx="50%"
+                  cy="50%"
+                  outerRadius="70%"
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {datos.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={colores[index % colores.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+
+          <Table striped bordered hover className="mt-3 text-center">
+            <thead>
+              <tr>
+                <th>Actividad</th>
+                <th>Minutos</th>
+                <th>Sesiones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {datos.map((actividad, index) => (
+                <tr key={index}>
+                  <td style={{ fontWeight: "bold", color: colores[index % colores.length] }}>
+                    {actividad.name}
+                  </td>
+                  <td>{actividad.value} min</td>
+                  <td>{actividad.sesiones}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </>
       ) : (
         <p>No hay datos para mostrar</p>
       )}

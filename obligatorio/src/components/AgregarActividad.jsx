@@ -131,8 +131,9 @@ const FormularioRegistro = () => {
           <Toast
           bg={error ? "white" : "white"} 
           onClose={() => setShowToast(false)}
-          delay={3000}
+          delay={5000}
           autohide
+          animation={false}
         >
           <Toast.Body
             style={{

@@ -1,7 +1,7 @@
 suguerencias:
 
-arreglar toast de eliminación
-loaders
-mensaje de bienvenida al registrarse?
-cambiar fondos
-footer con nuestros nombres
+arreglar toast de eliminación: Pronto
+loaders: pronto, loader global
+mensaje de bienvenida al registrarse? : pronto, con un modal
+cambiar fondo
+footer con nuestros nombres: pronto

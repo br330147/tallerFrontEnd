@@ -9,11 +9,11 @@ const GraficoMinutosUltimosSieteDias = () => {
   const datos = calcularMinutosUltimosSieteDias(registros);
 
   return (
-    <Card className="mt-3 p-3 text-center">
+    <Card className="mt-3 p-3 text-center cuadranteMinutosUltimos7dias">
       <h4>Minutos por Día (Últimos 7 días)</h4>
       {datos.length > 0 ? (
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={datos}>
+        <ResponsiveContainer width="100%" height={300} >
+          <BarChart data={datos} className="graficaMinutos7">
             <XAxis dataKey="fecha" />
             <YAxis />
             <Tooltip />

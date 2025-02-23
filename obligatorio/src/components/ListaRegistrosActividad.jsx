@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { eliminarRegistroActividad } from "../services/registrosActividadService";
 import { eliminarRegistroRedux } from "../redux/features/sliceRegistros";
-import { Container, Table, Form } from "react-bootstrap";
+import { Container, Table, Form, Toast, ToastContainer } from "react-bootstrap";
 import RegistroActividad from "./RegistroActividad";
 import PropTypes from "prop-types";
+import "../estilos/estilos.css";
 
 const ListaRegistrosActividad = ({ registros }) => {
   const idUsuario = localStorage.getItem("id");
@@ -12,12 +13,22 @@ const ListaRegistrosActividad = ({ registros }) => {
   const dispatch = useDispatch();
   const [filtro, setFiltro] = useState("todos");
 
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastError, setToastError] = useState(false);
+
   const handleEliminar = async (idRegistro) => {
     try {
       await eliminarRegistroActividad(idRegistro, idUsuario, token);
       dispatch(eliminarRegistroRedux(idRegistro));
-    } catch (error) {
-      console.error("Error eliminando registro:", error);
+
+      setToastMessage("Actividad eliminada con éxito");
+      setToastError(false);
+      setShowToast(true);
+    } catch {
+      setToastMessage("Error al eliminar la actividad");
+      setToastError(true);
+      setShowToast(true);
     }
   };
 
@@ -38,7 +49,7 @@ const ListaRegistrosActividad = ({ registros }) => {
 
   return (
     <Container>
-      <h3 className="titleRegistroAct text-center mt-3 mb-3">
+      <h3 className="titleRegistroAct text-center mb-3">
         Registros de Actividades
       </h3>
       <Form.Select onChange={(e) => setFiltro(e.target.value)}>
@@ -75,6 +86,26 @@ const ListaRegistrosActividad = ({ registros }) => {
           )}
         </tbody>
       </Table>
+
+      <ToastContainer
+        position="top-start"
+        style={{ zIndex: 1050 }}
+      >
+        <Toast
+          bg={toastError ? "danger" : "success"}
+          onClose={() => setShowToast(false)}
+          delay={5000}
+          autohide
+          show={showToast}
+        >
+          <Toast.Body style={{ color: "white" }}>
+            {toastMessage}
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
+
+
+
     </Container>
   );
 };

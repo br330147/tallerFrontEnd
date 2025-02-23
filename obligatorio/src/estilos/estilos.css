@@ -1,167 +1,231 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap");
 
-body {
-  background-image: url("../img/fondo2.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: quicksand !important;
-}
-
-.login,
-.registro,
-.formRegistroActividad {
-  color: #ad4f2c;
-  background-color: #0000009a !important;
-  border-radius: 10px;
-  padding: 20px;
-  font-weight: bolder;
-}
-
-.login input,
-.registro input,
-.formRegistroActividad input {
-  color: #ad4f2c !important;
-}
-
-.login p a,
-.registro p a {
-  color: #c45428;
-}
-
-.login p a:hover,
-.registro p a:hover {
-  color: #b4d6eb;
-}
-
-.botonLogin,
-.botonRegistro {
-  background-color: #ad4f2c !important;
-  border-color: #ad4f2c !important;
-}
-
-.botonLogin:hover,
-.botonRegistro:hover {
-  background-color: #b4d6eb !important;
-  border-color: #b4d6eb !important ;
-  color: #ad4f2c !important;
-}
-
-.registro select {
-  color: #ad4f2c;
-}
-
-.tituloDash {
-  color: #000000;
-  font-family: quicksand !important;
-  font-size: 3rem;
-  text-shadow: #000000 0px 0px 20px;
-  margin: auto;
-  width: 50%;
-}
-
-.dashboard {
-  background-image: url("../img/AdobeStock_219495150.jpeg");
-  background-size: cover;
-}
-
-.d-flex {
-  display: flex !important;
-  justify-content: center !important;
-}
-
-.primerCuadrante {
-  padding: 1rem 8rem !important;
-  background-color: #0000009a !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  border-radius: 10px;
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
-
-.cuadranteMinutosPorActividad {
-  background-color: #0000009a !important;
-  border-radius: 10px !important;
-  margin-top: 20px;
-}
-
-.cuadranteMinutosPorActividad h4 {
-  color: #ad4f2c !important;
-  font-size: 30px;
-  background-color: #0000009a !important;
-  padding: 10px 20px;
-  border-radius: 10px;
-}
-
-.tiempoTotalRegistrado {
-  background-color: #0000009a !important;
-  color: #ffffff !important;
-  font-size: 20px;
-}
-
-.minTotalRegistrado {
-  font-size: 25px;
-  color: #ad4f2c;
-}
-
-.tiempoDiarioRegistrado {
-  background-color: #0000009a !important;
-  color: #ffffff !important;
-}
-
-.tiempoDiarioRegistrado p {
-  color: #ad4f2c !important;
-}
-
-.ayer {
-  margin-bottom: 0px !important;
-  font-size: 25px;
-}
-
-.minutosAyer {
-  margin: 0px !important;
-}
-
-.minutosAyer,
-.minutosHoy {
-  font-size: 25px;
-  color: #ad4f2c;
-  font-weight: bolder;
-}
-
-.evolucionPersonal {
-  background-color: #ad4f2c !important;
-}
-
-.evolucionPersonal p {
-  color: #ffffff !important;
-  font-size: 25px;
-  margin: auto;
-}
-
-.btnCerrarSesion {
-  background-color: #000000 !important;
-}
-
-.btnCerrarSesion:hover {
-  background-color: #ad4f2c !important;
-}
-
-.cuadranteListaRegistros {
+  body {
+    background-image: url("../img/acceso.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: quicksand !important;
+  }
+  
+  /* Estilos para Login y Registro */
+  .login,
+  .registro,
+  .formRegistroActividad {
+    color: #ad4f2c;
     background-color: #0000009a !important;
     border-radius: 10px;
-}
+    padding: 20px;
+    font-weight: bolder;
+  }
+  
+  .login input,
+  .registro input,
+  .formRegistroActividad input {
+    color: #ad4f2c !important;
+  }
+  
+  .login p a,
+  .registro p a {
+    color: #c45428;
+  }
+  
+  .login p a:hover,
+  .registro p a:hover {
+    color: #b4d6eb;
+  }
+  
+  .botonLogin,
+  .botonRegistro {
+    background-color: #ad4f2c !important;
+    border-color: #ad4f2c !important;
+  }
+  
+  .botonLogin:hover,
+  .botonRegistro:hover {
+    background-color: #b4d6eb !important;
+    border-color: #b4d6eb !important;
+    color: #ad4f2c !important;
+  }
+  
+  .registro select {
+    color: #ad4f2c;
+  }
+  
+  /* Estilos para el Dashboard */
+  .tituloDash {
+    color: #000000;
+    font-family: quicksand !important;
+    font-size: 3rem;
+    text-shadow: #000000 0px 0px 20px;
+    margin: auto;
+    width: 50%;
+  }
+  
+  .dashboard {
+    background-image: url("../img/dashboard.jpeg");
+    background-size: cover;
+  }
+  
+  .d-flex {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  
+  /* 🔥 Asegurar que todos los cuadrantes tengan el mismo tamaño */
+  .cuadrante {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 450px; /* Ajustar según el contenido */
+    width: 100%;
+    background: #0000009a !important;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 1rem !important;
+  }
+  
+  /* 🔥 Asegurar que los gráficos y las listas ocupen el espacio adecuado */
+  .cuadrante .card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    /* align-items: start; */
+  }
+  
+  /* 🔥 Asegurar que cada cuadrante sea uniforme */
+  .primerCuadrante,
+  .cuadranteListaRegistros,
+  .cuadranteMinutosPorActividad,
+  .cuadranteMinutosUltimos7dias {
+    min-height: 450px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* 🔥 Títulos dentro de los cuadrantes */
+  .cuadrante h4 {
+    font-size: 24px;
+    text-align: center;
+    color: #ad4f2c !important;
+    background: #0000009a !important;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-.titleRegistroAct{
-  color: #ad4f2c !important;
-  font-size: 30px;
-  background-color: #0000009a !important;
-  padding: 10px 20px;
-  border-radius: 10px;
-}
+  .cuadranteMinutosPorActividad,.cuadranteMinutosUltimos7dias {
+    background-color: #00000000 !important;
+    border-style: none !important;
+    border-radius: 10px !important;
+    margin-top: 20px;
+  }
+  
+  .cuadranteMinutosPorActividad h4, .cuadranteMinutosUltimos7dias h4 {
+    color: #ad4f2c !important;
+    font-size: 30px;
+    background-color: #0000009a !important;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  
+  /* Estilos para las tarjetas de Minutos y Tiempo */
+  .tiempoTotalRegistrado,
+  .tiempoDiarioRegistrado {
+    background-color: #0000009a !important;
+    color: #ffffff !important;
+    font-size: 20px;
+  }
+  
+  .minTotalRegistrado,
+  .minutosAyer,
+  .minutosHoy {
+    font-size: 25px;
+    color: #ad4f2c;
+    font-weight: bolder;
+  }
+  
+  /* Estilos para Evolución Personal */
+  .evolucionPersonal {
+    background-color: #ad4f2c !important;
+  }
+  
+  .evolucionPersonal p {
+    color: #ffffff !important;
+    font-size: 25px;
+    margin: auto;
+  }
 
-/* 
-arreglar bordes
-loaders
-toasts
-*/
+  /*tablas*/
+  
+  /* Botón de Cerrar Sesión */
+  .btnCerrarSesion {
+    background-color: #000000 !important;
+  }
+  
+  .btnCerrarSesion:hover {
+    background-color: #ad4f2c !important;
+  }
+  
+  /* Estilos para Lista de Registros */
+  .cuadranteListaRegistros {
+    background-color: #0000009a !important;
+    border-radius: 10px;
+  }
+  
+  .titleRegistroAct {
+    color: #ad4f2c !important;
+    font-size: 30px;
+    background-color: #0000009a !important;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+
+  .graficaMinutos7{
+    padding-top: 30px;
+  }
+  
+  /* Loader Global */
+  .loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .loader-content {
+    text-align: center;
+    color: white;
+  }
+  
+  .loader-gif {
+    width: 120px;
+    margin-bottom: 10px;
+  }
+  
+  .loader-content h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #f8f9fa;
+    margin: 0px 0px;
+    color: #343a40;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+  }
+  
