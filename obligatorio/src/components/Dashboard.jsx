@@ -91,7 +91,7 @@ const Dashboard = () => {
         </h2>
 
         <Row className="g-4 justify-content-center">
-  {/* 🔥 Primer Cuadrante */}
+  {/* Primer Cuadrante */}
   <Col lg={5} md={12} className="cuadrante primerCuadrante m-3">
     <Row className="m-auto d-flex">
       <Col md={6} xs={12} className="d-flex">
@@ -104,7 +104,7 @@ const Dashboard = () => {
     <FormularioRegistro />
   </Col>
 
-  {/* 🔥 Segundo Cuadrante */}
+  {/* Segundo Cuadrante */}
   <Col lg={5} md={12} className="cuadrante cuadranteListaRegistros m-3">
     <ListaRegistrosActividad registros={registrosPaginados} setFiltro={setFiltro} />
 
@@ -129,12 +129,12 @@ const Dashboard = () => {
 </Row>
 
 <Row className="g-4 justify-content-center">
-  {/* 🔥 Tercer Cuadrante */}
+  {/* ercer Cuadrante */}
   <Col lg={5} md={12} className="cuadrante m-3">
     <GraficoMinutosPorActividad />
   </Col>
 
-  {/* 🔥 Cuarto Cuadrante */}
+  {/* Cuarto Cuadrante */}
   <Col lg={5} md={12} className="cuadrante m-3 align-items-flex-start">
     <GraficoMinutosUltimosSieteDias />
   </Col>

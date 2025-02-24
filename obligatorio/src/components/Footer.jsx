@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import "../estilos/estilos.css"; // Asegúrate de tener estilos si quieres personalizarlo
+import "../estilos/estilos.css";
 
 const Footer = () => {
   return (
