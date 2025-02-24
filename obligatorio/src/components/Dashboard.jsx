@@ -29,8 +29,6 @@ const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [filtro, setFiltro] = useState("todos");
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {

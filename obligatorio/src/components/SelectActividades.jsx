@@ -28,7 +28,7 @@ const SelectActividades = ({ idActividad, setIdActividad }) => {
   );
 };
 
-//gregamos `PropTypes` para validar las `props`
+//gregamos "PropTypes" para validar las "props"
 SelectActividades.propTypes = {
   idActividad: PropTypes.string.isRequired, 
   setIdActividad: PropTypes.func.isRequired, 

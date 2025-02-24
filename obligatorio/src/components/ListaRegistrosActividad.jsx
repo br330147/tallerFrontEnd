@@ -103,9 +103,6 @@ const ListaRegistrosActividad = ({ registros }) => {
           </Toast.Body>
         </Toast>
       </ToastContainer>
-
-
-
     </Container>
   );
 };
