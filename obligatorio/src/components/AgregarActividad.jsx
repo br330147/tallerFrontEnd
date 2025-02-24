@@ -116,7 +116,7 @@ const FormularioRegistro = () => {
 
   return (
     // Toastsss
-    <Form className="mt-5 formRegistroActividad">
+    <Form className="mt-5 mb-3 formRegistroActividad">
       {}
       <ToastContainer
         style={{
